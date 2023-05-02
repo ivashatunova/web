@@ -18,7 +18,6 @@ public class CardTest {
     @BeforeAll
     static void setUaAll() {
         WebDriverManager.chromedriver().setup();
-//        System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
     }
 
     @BeforeEach
@@ -38,7 +37,7 @@ public class CardTest {
 
     @Test
     void shouldTestSendingForm() {
-        driver.get("http://0.0.0.0:9999");
+        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Шатунова Иванна");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79168580322");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
@@ -50,7 +49,7 @@ public class CardTest {
 
     @Test
     void shouldNotSendingLatinSymbols() {
-        driver.get("http://0.0.0.0:9999");
+        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Ivanna");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79168580322");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
@@ -62,7 +61,7 @@ public class CardTest {
 
     @Test
     void shouldNotSendEmptyName() {
-        driver.get("http://0.0.0.0:9999");
+        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79168580322");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
@@ -74,7 +73,7 @@ public class CardTest {
 
     @Test
     void shouldNotSendSpaceInName() {
-        driver.get("http://0.0.0.0:9999");
+        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys(" ");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79168580322");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
@@ -86,7 +85,7 @@ public class CardTest {
 
     @Test
     void shouldNotSendEmptyPhone() {
-        driver.get("http://0.0.0.0:9999");
+        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Шатунова Иванна");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
@@ -98,7 +97,7 @@ public class CardTest {
 
     @Test
     void shouldNotSendIncompletePhone() {
-        driver.get("http://0.0.0.0:9999");
+        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Шатунова Иванна");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+7916858032");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
@@ -110,7 +109,7 @@ public class CardTest {
 
     @Test
     void shouldNotSendPhoneMoreThanEleven() {
-        driver.get("http://0.0.0.0:9999");
+        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Шатунова Иванна");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79168580322222");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
@@ -119,8 +118,6 @@ public class CardTest {
         String actual = driver.findElement(By.cssSelector("[data-test-id='phone'] span.input__sub")).getText().trim();
         assertEquals(expected, actual);
     }
-
-
 }
 
 
